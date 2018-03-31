@@ -1,18 +1,23 @@
 package com.my.gw_boot.handler;
 
+/*
+ * replace to ApiHandlerFactory
+ * Not use
+ * 
+ * */
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.my.gw_boot.config.SpringConfig;
-import com.my.gw_boot.service.BackService;
-import com.my.gw_boot.service.FrontService;
+import com.my.gw_boot.service.MyService;
 
 
-@Component("apiHandler")
-public class ApiHandler {
+@Component("apiHandler_180331")
+public class ApiHandler_180331 {
 	
-	private final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger( ApiHandler.class );
+	private final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger( ApiHandler_180331.class );
 	
 	@Autowired
 	@Qualifier("springConfig")
@@ -20,11 +25,13 @@ public class ApiHandler {
 	
 	@Autowired
 	@Qualifier("frontServiceImpl")
-	private FrontService frontService;
+	private MyService frontService;
+	//private FrontService frontService;
 	
 	@Autowired
 	@Qualifier("backServiceImpl")
-	private BackService backService;
+	private MyService backService;
+	//private BackService backService;
 	
 	public String doProcess( String requestMsg ) throws Exception {
 		

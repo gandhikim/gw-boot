@@ -12,7 +12,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import com.my.gw_boot.config.SpringConfig;
-import com.my.gw_boot.handler.ApiHandler;
+import com.my.gw_boot.handler.ApiHandlerFactory;
+import com.my.gw_boot.handler.ApiHandler_180331;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -40,8 +41,12 @@ public class NettyServer {
 	private SpringConfig springConfig;
 	
 	@Autowired
-	@Qualifier("apiHandler")
-	ApiHandler apiHandler;
+	@Qualifier("apiHandler_180331")
+	ApiHandler_180331 apiHandler;
+	
+	@Autowired
+	@Qualifier("apiHandlerFactory")
+	ApiHandlerFactory apiHandlerFactory;
 	
 	private EventLoopGroup bossGroup;
 	private EventLoopGroup workerGroup;
@@ -131,7 +136,9 @@ public class NettyServer {
     		}
     		
     		String responseMsg = null; 
-    		responseMsg = apiHandler.doProcess((String)requestMsg);
+    		//responseMsg = apiHandler.doProcess((String)requestMsg);
+    		responseMsg = apiHandlerFactory.getMyService((String)springConfig.getDemonType()).service((String)requestMsg);
+    		
     		
     		if(StringUtils.isEmpty(responseMsg)) {
     			throw new NullPointerException("responseMsg null");

@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.my.gw_boot.service.FrontService;
 import com.my.gw_boot.config.SpringConfig;
 import com.my.gw_boot.mapper.FrontMapper;
 import com.my.gw_boot.netty.NettyClient;
+import com.my.gw_boot.service.MyService;
 
 
 @Service("frontServiceImpl")
-public class FrontServiceImpl implements FrontService {
+public class FrontServiceImpl implements MyService {
 
 	private final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(FrontServiceImpl.class);
 	
