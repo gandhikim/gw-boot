@@ -32,14 +32,12 @@ public class FrontServiceImpl implements MyService {
 		
 		try {
 			
+			// gw : send msg
 			responseMsg = client.send(	springConfig.getBackServerIp(), 
 										springConfig.getBackServerPort(), 
 										requestMsg, 
 										springConfig.getBackServerTimeout());
-			
-			if("testMsg[6".equals(requestMsg))
-				log.info("frontMapper.selectDBConnectTest[" + frontMapper.selectDBConnectTest());
-			
+
 		} catch (Exception e) {
 			log.error(e.getMessage());
 		}

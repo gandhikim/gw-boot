@@ -25,8 +25,13 @@ public class BackServiceImpl implements MyService {
 		
 		try {
 			
+			// if apiType 
+			
+			
+			// echo msg
 			responseMsg = requestMsg;
 			
+			// db connection test
 			if("testMsg[6".equals(requestMsg))
 				log.info("frontMapper.selectDBConnectTest[" + frontMapper.selectDBConnectTest());
 			
